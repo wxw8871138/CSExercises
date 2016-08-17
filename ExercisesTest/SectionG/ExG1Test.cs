@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using CSExercises;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExercisesTest
@@ -7,39 +8,51 @@ namespace ExercisesTest
     [TestClass]
     public class ExG1Test
     {
-        [TestMethod]
-        public void ExG1_TestWithABCDE()
+        static void Main(string[] args)
         {
-            TestHelper t = new TestHelper();
-            t.SetupConsole("Abcde");
-            TestHelper.RunMain(typeof(ExG1));
-            t.WriteLog();
-            Assert.AreEqual(1, t.CountOutputContaining("2"));
-            Assert.AreEqual(2, t.CountOutputContaining("1"));
-            Assert.AreEqual(3, t.CountOutputContaining("0"));
-
+            q1();
         }
-
-        [TestMethod]
-        public void ExG1_TestWithRycky()
+        static void q1()
         {
-            TestHelper t = new TestHelper();
-            t.SetupConsole("rykcy");
-            TestHelper.RunMain(typeof(ExG1));
-            t.WriteLog();
-            Assert.AreEqual(6, t.CountOutputContaining("0"));
+            Console.WriteLine("Question 1:");
+            Console.Write("Enter a string:");
+            string input = Console.ReadLine();
+            int tSum = 0;
+            int aSum = 0;
+            int eSum = 0;
+            int iSum = 0;
+            int oSum = 0;
+            int uSum = 0;
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == 'a' || input[i] == 'A')
+                {
+                    aSum++;
+                }
+                else if (input[i] == 'e' || input[i] == 'E')
+                {
+                    eSum++;
+                }
+                else if (input[i] == 'i' || input[i] == 'I')
+                {
+                    iSum++;
+                }
+                else if (input[i] == 'o' || input[i] == 'O')
+                {
+                    oSum++;
+                }
+                else if (input[i] == 'u' || input[i] == 'U')
+                {
+                    uSum++;
+                }
+            }
+            tSum = aSum + eSum + iSum + oSum + uSum;
+            Console.WriteLine("Total vowels:{0}", tSum);
+            Console.WriteLine("A:{0}", aSum);
+            Console.WriteLine("E:{0}", eSum);
+            Console.WriteLine("I:{0}", iSum);
+            Console.WriteLine("O:{0}", oSum);
+            Console.WriteLine("U:{0}", uSum);
         }
-
-        [TestMethod]
-        public void ExG1_TestWithAeiou()
-        {
-            TestHelper t = new TestHelper();
-            t.SetupConsole("AEIOUaeiou");
-            TestHelper.RunMain(typeof(ExG1));
-            t.WriteLog();
-            Assert.AreEqual(1, t.CountOutputContaining("10"));
-            Assert.AreEqual(5, t.CountOutputContaining("2"));
-        }
-
     }
 }
