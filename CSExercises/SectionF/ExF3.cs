@@ -26,7 +26,7 @@ namespace CSExercises
     {
         public static void Main(string[] args)
         {
-            int [,] marks = new int[,]
+            int[,] marks = new int[,]
             {
                 {56,84,68,29},
                 {94,73,31,96},
@@ -41,7 +41,6 @@ namespace CSExercises
                 {64,71,67,25},
                 {16,93,46,72}
             };
-
             int[] total = CalculateTotalMarks(marks);
             double[] avg = CalculateStudentAverage(marks);
             double[] avgPerSubject = CalculateSubjectAverage(marks);
@@ -49,7 +48,7 @@ namespace CSExercises
 
             for (int row = 0; row < 12; row++)
             {
-                Console.WriteLine("Total marks for student {0}: {1}",row,total[row]);
+                Console.WriteLine("Total marks for student {0}: {1}", row, total[row]);
                 Console.WriteLine("Avg marks for student {0}: {1}", row, avg[row]);
             }
 
@@ -62,20 +61,36 @@ namespace CSExercises
 
         public static int[] CalculateTotalMarks(int[,] marks)
         {
+            //YOUR CODE HERE
 
             int[] total = new int[12];
+            for (int i = 0; i < marks.GetLength(0); i++)
+            {
+                for (int j = 0; j < marks.GetLength(1); j++)
+                {
+                    total[i] = total[i] + marks[i, j];
+                }
+            }
 
-            //YOUR CODE HERE
             return total;
 
 
         }
 
         public static double[] CalculateStudentAverage(int[,] marks)
-        {
-            double[] avg = new double[12];
-
+        {   
             //YOUR CODE HERE
+
+            double[] avg = new double[12];
+            for (int i = 0; i < marks.GetLength(0); i++)
+            {
+                for (int j = 0; j < marks.GetLength(1); j++)
+                {
+                    avg[i] = avg[i] + marks[i, j];
+                }
+                avg[i] = avg[i] / marks.GetLength(1);
+            }
+
             return avg;
 
 
@@ -85,8 +100,19 @@ namespace CSExercises
         public static double[] CalculateSubjectAverage(int[,] marks)
         {
             double[] avgPerSubject = new double[4];
-
+            //for (int i = 0; i < marks.GetLength(0); i++)
+            //{
+            //    total[i] = marks[i, 0] + marks[i, 1] + marks[i, 2] + marks[i, 3];
+            //}
             //YOUR CODE HERE
+            for (int i = 0; i < marks.GetLength(1); i++)
+            {
+                for (int j = 0; j < marks.GetLength(0); j++)
+                {
+                    avgPerSubject[i] = avgPerSubject[i] + marks[j, i];
+                }
+                avgPerSubject[i] = avgPerSubject[i] / marks.GetLength(0);
+            }
             return avgPerSubject;
 
 

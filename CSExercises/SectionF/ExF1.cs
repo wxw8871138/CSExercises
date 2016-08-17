@@ -25,7 +25,7 @@ namespace CSExercises
             int[] sales = new int[12];
             for (int n = 0; n < 12; n++)
             {
-                Console.Write("Enter sales for month {0}: " , n);
+                Console.Write("Enter sales for month {0}: ", n);
                 sales[n] = Convert.ToInt32(Console.ReadLine());
             }
 
@@ -44,6 +44,9 @@ namespace CSExercises
         {
             //YOUR CODE HERE
             //Assign the result to minMonth, maxMonth and avg variable/parameter accordingly
+            minMonth = CalculateMinMonth(sales);
+            maxMonth = CalculateMaxMonth(sales);
+            avg = CalculateAvgSales(sales);
 
 
         }
@@ -51,23 +54,49 @@ namespace CSExercises
         public static int CalculateMinMonth(int[] sales)
         {
             //YOUR CODE HERE
-            return 0;
+            int minMon = 0;
+            int minSale = sales[0];
+            for (int i = 0; i < sales.Length; i++)
+            {
+                if (minSale > sales[i])
+                {
+                    minMon = i;
+                    minSale = sales[i];
+                }
+            }
+            return minMon;
 
         }
 
         public static int CalculateMaxMonth(int[] sales)
         {
             //YOUR CODE HERE
-            return 0;
+            int maxMon = 0;
+            int maxSale = sales[0];
+            for (int i = 0; i < sales.Length; i++)
+            {
+                if (maxSale < sales[i])
+                {
+                    maxMon = i;
+                    maxSale = sales[i];
+                }
+               
+            }
 
-
-
+           return maxMon;
         }
 
         public static double CalculateAvgSales(int[] sales)
         {
             //YOUR CODE HERE
-            return 0;
+            double sum = 0;
+            double avg = 0;
+            for (int i = 0; i < sales.Length; i++)
+            {
+                sum = sum + sales[i];
+            }
+            avg = sum / sales.Length;
+            return avg;
 
         }
 
