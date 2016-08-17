@@ -135,7 +135,7 @@ namespace CSExercises
                 {
                     variance[i] = variance[i]+Math.Pow(marks[j,i]-avgPerSubject[i],2);
                 }
-                variance[i] = Math.Sqrt(variance[i] / marks.GetLength(0));
+                variance[i] = Math.Sqrt(variance[i] / marks.GetLength(1));
             }
             return variance;
         }
