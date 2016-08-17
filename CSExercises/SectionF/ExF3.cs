@@ -44,7 +44,7 @@ namespace CSExercises
             int[] total = CalculateTotalMarks(marks);
             double[] avg = CalculateStudentAverage(marks);
             double[] avgPerSubject = CalculateSubjectAverage(marks);
-
+            double[] variance = CalculateVariance(marks);
 
             for (int row = 0; row < 12; row++)
             {
@@ -56,7 +56,10 @@ namespace CSExercises
             {
                 Console.WriteLine("Avg marks for subject {0}: {1}", col, avgPerSubject[col]);
             }
-
+            for (int col = 0; col < 4; col++)
+            {
+                Console.WriteLine("Variance marks for subject {0}: {1}", col, variance[col]);
+            }
         }
 
         public static int[] CalculateTotalMarks(int[,] marks)
@@ -125,6 +128,15 @@ namespace CSExercises
         {
             double[] variance = new double[12];
             //YOUR CODE HERE - bonus questions
+            double[] avgPerSubject = CalculateSubjectAverage(marks);
+            for (int i = 0; i < marks.GetLength(1); i++)
+            {
+                for (int j = 0; j < marks.GetLength(0); j++)
+                {
+                    variance[i] = variance[i]+Math.Pow(marks[j,i]-avgPerSubject[i],2);
+                }
+                variance[i] = Math.Sqrt(variance[i] / marks.GetLength(0));
+            }
             return variance;
         }
     }
